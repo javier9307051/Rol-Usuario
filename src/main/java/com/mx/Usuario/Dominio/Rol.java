@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table
@@ -22,9 +26,13 @@ public class Rol {
 	private String descripcion;
 
 	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
 	private Date fechaInsercion;
 
 	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
 	private Date fechaModificacion;
 	
 	@OneToMany(mappedBy="rolId", cascade=CascadeType.ALL)

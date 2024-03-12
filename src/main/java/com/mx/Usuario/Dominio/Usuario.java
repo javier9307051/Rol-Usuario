@@ -2,6 +2,8 @@ package com.mx.Usuario.Dominio;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -9,6 +11,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="USUARIO")
@@ -27,15 +31,21 @@ public class Usuario {
 	private String apellidoM;
 
 	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
 	private Date nacimiento;
 
 	@Column
 	private int edad;
 
 	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
 	private Date fechaInsercion;
 
 	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
 	private Date fechaModificacion;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
